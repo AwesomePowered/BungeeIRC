@@ -1,6 +1,6 @@
 package net.lazlecraft.bungeeirc;
 
-public class Messanger {
+public class Messenger {
 
 	
 	public static void sendMessage(String Message) {
