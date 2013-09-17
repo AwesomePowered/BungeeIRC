@@ -8,8 +8,11 @@
 #                   |___/  By the almighty LaxWasHere                       
 #
 Bot:
-    Nick:
-    Channel:
-    Network:
-    Port:
-    Password:
+    Nick: BungeeIRC
+    Channel: '#Timelords'
+    Network: irc.esper.net
+    Port: 6667
+    Password: Adsf123
+Admins:
+- LaxWasHere
+- Yomama

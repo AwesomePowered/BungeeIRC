@@ -1,10 +1,5 @@
 package net.lazlecraft.bungeeirc;
 
-import java.io.IOException;
-
-import org.pircbotx.exception.IrcException;
-import org.pircbotx.exception.NickAlreadyInUseException;
-
 import net.craftminecraft.bungee.bungeeyaml.pluginapi.ConfigurablePlugin;
 
 public class BungeeIRC extends ConfigurablePlugin {
@@ -17,26 +12,18 @@ public class BungeeIRC extends ConfigurablePlugin {
 	
 	
 	public void onEnable() {
+		this.getConfig().options().copyDefaults(true);
+		this.saveConfig();
 		BotNick = getConfig().getString("Bot.Nick");
 		BotPass = getConfig().getString("Bot.Password");
 		BotNetwork = getConfig().getString("Bot.Network");
 		BotChannel = getConfig().getString("Bot.Channel");
-		
-		try {
-			BotConnect.botConnect();
-		} catch (NickAlreadyInUseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IrcException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		BotConnect.botConnect();
 	}
 	
 	public void onDisable() {
+		if (BotInstance.bot.isConnected()) {
 		BotConnect.botDisconnect();
+		}
 	}
 }
