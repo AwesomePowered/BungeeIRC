@@ -13,7 +13,6 @@ public class BotConnect {
 		BotInstance.bot.setName(BungeeIRC.BotNick);
 		BotInstance.bot.connect(BungeeIRC.BotNetwork, BungeeIRC.BotPort, BungeeIRC.BotPass);
 		System.out.println("Bot Connected");
-		BotInstance.bot.joinChannel(BungeeIRC.BotChannel);
 		} catch (NickAlreadyInUseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,9 +23,12 @@ public class BotConnect {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		BotInstance.bot.joinChannel(BungeeIRC.BotChannel);
+		Messenger.sendMessage("EXTERMINATE!");
 	}
 	
 	public static void botDisconnect() {
+		Messenger.sendMessage("I shall return!");
 		BotInstance.bot.disconnect();
 		System.out.println("Bot disconnected");
 	}

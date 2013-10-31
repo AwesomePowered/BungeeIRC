@@ -18,7 +18,9 @@ public class BungeeIRC extends ConfigurablePlugin {
 		BotPass = getConfig().getString("Bot.Password");
 		BotNetwork = getConfig().getString("Bot.Network");
 		BotChannel = getConfig().getString("Bot.Channel");
+		BotPort = getConfig().getInt("Bot.Port");
 		BotConnect.botConnect();
+		System.out.println(BotNick + BotPass + BotNetwork + BotChannel);
 	}
 	
 	public void onDisable() {
