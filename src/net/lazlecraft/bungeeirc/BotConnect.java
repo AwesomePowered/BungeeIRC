@@ -10,8 +10,8 @@ public class BotConnect {
 	
 	public static void botConnect()  {
 		try {
-		BotInstance.bot.setName(BungeeIRC.BotNick);
 		BotInstance.bot.connect(BungeeIRC.BotNetwork, BungeeIRC.BotPort, BungeeIRC.BotPass);
+		BotInstance.bot.setAutoReconnect(true);
 		System.out.println("Bot Connected");
 		} catch (NickAlreadyInUseException e) {
 			// TODO Auto-generated catch block
@@ -23,8 +23,23 @@ public class BotConnect {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BotInstance.bot.joinChannel(BungeeIRC.BotChannel);
+		Messenger.sendChanMessage("nickserv", "identify " + BungeeIRC.BotPass);
 		Messenger.sendMessage("EXTERMINATE!");
+		joinChannels();
+	}
+	
+	public static void botConnectDeux() {
+		
+	}
+	
+	public static void botReconnect() throws NickAlreadyInUseException, IOException, IrcException {
+		BotInstance.bot.reconnect();
+	}
+	
+	public static void joinChannels() {
+		BotInstance.bot.joinChannel(BungeeIRC.BotChannel);
+		for (String chans : BungeeIRC.Channels)
+		BotInstance.bot.joinChannel(chans);
 	}
 	
 	public static void botDisconnect() {

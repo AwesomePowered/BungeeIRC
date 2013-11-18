@@ -7,12 +7,12 @@
 #                    __/ |                            
 #                   |___/  By the almighty LaxWasHere                       
 #
+#
 Bot:
-    Nick: BungeeIRC
-    Channel: '#Timelords'
-    Network: irc.esper.net
+    Nick: 'MyBungeeIRC'
+    MainChannel: '#BungeeIRC'
+    Network: 'irc.PoweredByHate.net'
     Port: 6667
-    Password: Adsf123
-Admins:
-- LaxWasHere
-- Yomama
+    Password: 'MyPassword'
+    Channels:
+     - '#Bots'

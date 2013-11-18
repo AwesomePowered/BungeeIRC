@@ -11,4 +11,8 @@ public class Messenger {
 		BotInstance.bot.sendMessage(Channel, Message);
 	}
 	
+	public static void sendPrivateMessage(String target, String message) {
+		BotInstance.bot.sendMessage(target, message);
+	}
+	
 }

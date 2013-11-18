@@ -1,5 +1,7 @@
 package net.lazlecraft.bungeeirc;
 
+import java.util.List;
+
 import net.craftminecraft.bungee.bungeeyaml.pluginapi.ConfigurablePlugin;
 
 public class BungeeIRC extends ConfigurablePlugin {
@@ -8,6 +10,7 @@ public class BungeeIRC extends ConfigurablePlugin {
 	public static String BotPass;
 	public static String BotNetwork;
 	public static String BotChannel;
+	public static List<String> Channels;
 	public static int BotPort;
 	
 	
@@ -17,10 +20,15 @@ public class BungeeIRC extends ConfigurablePlugin {
 		BotNick = getConfig().getString("Bot.Nick");
 		BotPass = getConfig().getString("Bot.Password");
 		BotNetwork = getConfig().getString("Bot.Network");
-		BotChannel = getConfig().getString("Bot.Channel");
+		BotChannel = getConfig().getString("Bot.MainChannel");
 		BotPort = getConfig().getInt("Bot.Port");
+		Channels = getConfig().getStringList("Bot.Channels");
+		BotInstance.bot.setName(BotNick);
+		if (getConfig().getBoolean("Bot.UsingBouncer")) {
 		BotConnect.botConnect();
-		System.out.println(BotNick + BotPass + BotNetwork + BotChannel);
+		} else {
+			BotConnect.botConnectDeux();
+		}
 	}
 	
 	public void onDisable() {
