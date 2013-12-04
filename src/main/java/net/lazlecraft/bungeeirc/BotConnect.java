@@ -14,8 +14,8 @@ public class BotConnect {
 		BotInstance.bot.setAutoReconnect(true);
 		System.out.println("Bot Connected");
 		} catch (NickAlreadyInUseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			BotInstance.bot.setName(BungeeIRC.BotNick + "_");
+            botConnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,7 +24,6 @@ public class BotConnect {
 			e.printStackTrace();
 		}
 		Messenger.sendChanMessage("nickserv", "identify " + BungeeIRC.BotPass);
-		Messenger.sendMessage("EXTERMINATE!");
 		joinChannels();
 	}
 	
@@ -43,7 +42,6 @@ public class BotConnect {
 	}
 	
 	public static void botDisconnect() {
-		Messenger.sendMessage("I shall return!");
 		BotInstance.bot.disconnect();
 		System.out.println("Bot disconnected");
 	}

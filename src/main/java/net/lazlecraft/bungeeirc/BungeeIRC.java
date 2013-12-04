@@ -16,6 +16,8 @@ public class BungeeIRC extends ConfigurablePlugin {
 	
 	public void onEnable() {
         this.getProxy().getPluginManager().registerCommand(this, new IRCRecon(this));
+        this.getProxy().getPluginManager().registerCommand(this, new IRCConnect(this));
+        this.getProxy().getPluginManager().registerCommand(this, new IRCDisconnect(this));
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
 		BotNick = getConfig().getString("Bot.Nick");
@@ -25,7 +27,7 @@ public class BungeeIRC extends ConfigurablePlugin {
 		BotPort = getConfig().getInt("Bot.Port");
 		Channels = getConfig().getStringList("Bot.Channels");
 		BotInstance.bot.setName(BotNick);
-		if (getConfig().getBoolean("Bot.UsingBouncer")) {
+		if (!getConfig().getBoolean("Bot.UsingBouncer")) {
 		BotConnect.botConnect();
 		} else {
 			BotConnect.botConnectDeux();

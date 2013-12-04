@@ -16,8 +16,15 @@ public class IRCRecon extends Command {
     @Override
     public void execute(CommandSender sender, String[] arg1) {
         if (sender.hasPermission("bungeeirc.reconnect")) {
-            BotConnect.botConnect();
-            sender.sendMessage(ChatColor.GREEN + "Bot Reconnecting");
+            if (BotInstance.bot.isConnected()) {
+                BotConnect.botDisconnect();
+                sender.sendMessage(ChatColor.DARK_RED  + "Attempting to reconnect");
+                BotConnect.botConnect();
+                sender.sendMessage(ChatColor.GREEN + "Bot reconnected");
+            } else {
+                BotConnect.botConnect();
+                sender.sendMessage(ChatColor.GREEN + "Bot reconnected");
+            }
         }
     }
 }

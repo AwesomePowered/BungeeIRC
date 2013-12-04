@@ -9,6 +9,7 @@
 #
 #
 Bot:
+    UsingBouncer: false
     Nick: 'MyBungeeIRC'
     MainChannel: '#BungeeIRC'
     Network: 'irc.PoweredByHate.net'

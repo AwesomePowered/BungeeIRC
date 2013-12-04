@@ -1,5 +1,5 @@
 name: BungeeIRC
-version: 0.0
+version: ${project.version}
 author: LaxWasHere
 depends: [BungeeYAML]
 main: net.lazlecraft.bungeeirc.BungeeIRC
